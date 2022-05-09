@@ -1,0 +1,11 @@
+[Unit]
+Description=Connection between CamillaDSP and the USB input volume and mute controls
+After=multi-user.target
+
+[Service]
+User=pi
+Type=idle
+ExecStart=python3 /home/pi/camilladsp/usb-control.py
+
+[Install]
+WantedBy=multi-user.target

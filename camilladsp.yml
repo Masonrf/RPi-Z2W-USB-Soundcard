@@ -1,0 +1,39 @@
+devices:
+  adjust_period: 2
+  capture:
+    channels: 2
+    device: hw:CARD=UAC2Gadget,DEV=0
+    format: S32LE
+    type: Alsa
+  capture_samplerate: 44100
+  chunksize: 4096
+  enable_rate_adjust: true
+  enable_resampling: false
+  playback:
+    channels: 2
+    device: hw:CARD=BossDAC,DEV=0
+    format: S32LE
+    type: Alsa
+  queuelimit: 4
+  rate_measure_interval: 1
+  resampler_type: FastAsync
+  samplerate: 384000
+  silence_threshold: -100
+  silence_timeout: 5
+  stop_on_rate_change: false
+  target_level: 4096
+filters:
+  Output Volume:
+    parameters:
+      ramp_time: 200
+    type: Volume
+mixers: {}
+pipeline:
+- channel: 0
+  names:
+  - Output Volume
+  type: Filter
+- channel: 1
+  names:
+  - Output Volume
+  type: Filter
